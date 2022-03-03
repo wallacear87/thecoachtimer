@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
         LiveData<List<String>> playersListString = homeViewModel.getplayersList();
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
+        //
         return root;
     }
 
