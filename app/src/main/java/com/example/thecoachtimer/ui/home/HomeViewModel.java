@@ -11,7 +11,7 @@ public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<List<String>> playersList;
 
-    LiveData<List<String>> getplayersList() {
+    LiveData<List<String>> getCurrentplayersList() {
         if (playersList == null) {
             playersList = new MutableLiveData<>();
             loadplayersList();
@@ -26,7 +26,7 @@ public class HomeViewModel extends ViewModel {
         playersListString.add("giocatore 3");
         playersList.setValue(playersListString);
     }
-    
+
 
     public LiveData<List<String>> getText() {
         return playersList;
