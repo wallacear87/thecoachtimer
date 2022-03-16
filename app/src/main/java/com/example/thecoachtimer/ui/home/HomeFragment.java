@@ -9,11 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.PlayersAdapter;
+import com.example.Player;
 import com.example.thecoachtimer.databinding.FragmentHomeBinding;
 
 import java.util.List;
@@ -21,6 +23,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+
+    RecyclerView recyclerView;
+    PlayersAdapter adapter;
+
+    List<Player> playerList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,16 +38,17 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
-        LiveData<List<String>> playersListString = homeViewModel.getCurrentplayersList();
-
+        recyclerView = binding.recyclerview;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //metto qui l adapter
         // Create the observer which updates the UI.
-        final Observer<List<String>> nameObserver = new Observer<List<String>>() {
+        final Observer<List<Player>> nameObserver = new Observer<List<Player>>() {
             @Override
-            public void onChanged(List<String> strings) {
-                textView.setText(playersListString.getValue().get(2));
-
+            public void onChanged(@Nullable List<Player> playerList) {
+                adapter = new PlayersAdapter( getContext(), playerList);
+                recyclerView.setAdapter(adapter);
             }
         };
 

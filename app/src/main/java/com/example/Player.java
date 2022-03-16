@@ -1,15 +1,24 @@
 package com.example;
 
-public class player {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+public class Player {
+
+    @SerializedName("name")
+    @Expose
     private static String name;
+    @SerializedName("gender")
+    @Expose
     private String gender;
-    private String pictureThumbnail;
+    @SerializedName("pictureThumbnail")
+    @Expose
+    private static String pictureThumbnail;
 
-    public player(String name, String gender, String pictureThumbnail){
-        this.name = name;
+    public Player(String name, String gender, String pictureThumbnail){
+        Player.name = name;
         this.gender = gender;
-        this.pictureThumbnail = pictureThumbnail;
+        Player.pictureThumbnail = pictureThumbnail;
     }
 
     public String getGender() {
@@ -25,7 +34,7 @@ public class player {
     }
 
     public void setName(String name) {
-        this.name = name;
+        Player.name = name;
     }
 
     public static String getPictureThumbnail() {
@@ -33,6 +42,6 @@ public class player {
     }
 
     public void setPictureThumbnail(String pictureThumbnail) {
-        this.pictureThumbnail = pictureThumbnail;
+        Player.pictureThumbnail = pictureThumbnail;
     }
 }

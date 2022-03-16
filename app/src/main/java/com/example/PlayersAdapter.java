@@ -1,8 +1,6 @@
 package com.example;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +12,17 @@ import com.example.thecoachtimer.R;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayerViewHolder> {
 
         Context mCtx;
-        List<player> playersList;
+        List<Player> playersList;
 
-        public PlayersAdapter(Context mCtx, List<player> heroList) {
+        public PlayersAdapter(Context mCtx, List<Player> playersList) {
             this.mCtx = mCtx;
-            this.playersList = heroList;
+            this.playersList = playersList;
         }
 
         @NonNull
@@ -33,18 +34,18 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayerVi
 
         @Override
         public void onBindViewHolder(@NonNull PlayerViewHolder holder, int position) {
-            player hero = playersList.get(position);
+            Player player = playersList.get(position);
 
             Glide.with(mCtx)
                     .load(player.getPictureThumbnail())
                     .into(holder.imageView);
 
-            holder.textView.setText(player.getName());
+            holder.textView.setText(player.getName() !=null ? player.getName() : "nome replacement");
         }
 
         @Override
         public int getItemCount() {
-            return playersList.size();
+            return 1;
         }
 
         class PlayerViewHolder extends RecyclerView.ViewHolder {
