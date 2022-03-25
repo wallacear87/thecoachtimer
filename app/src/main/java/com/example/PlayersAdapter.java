@@ -40,7 +40,7 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayerVi
                     .load(player.getPictureThumbnail())
                     .into(holder.imageView);
 
-            holder.textView.setText(player.getName() !=null ? player.getName() : "nome replacement");
+            holder.textView.setText(player.getName() !=null ? player.getName().getFirst() : "player name");
         }
 
         @Override

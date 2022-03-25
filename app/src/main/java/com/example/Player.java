@@ -7,7 +7,7 @@ public class Player {
 
     @SerializedName("name")
     @Expose
-    private static String name;
+    private static Playername Playername;
     @SerializedName("gender")
     @Expose
     private String gender;
@@ -15,8 +15,8 @@ public class Player {
     @Expose
     private static String pictureThumbnail;
 
-    public Player(String name, String gender, String pictureThumbnail){
-        Player.name = name;
+    public Player(Playername name, String gender, String pictureThumbnail){
+        Playername = name;
         this.gender = gender;
         Player.pictureThumbnail = pictureThumbnail;
     }
@@ -29,12 +29,12 @@ public class Player {
         this.gender = gender;
     }
 
-    public static String getName() {
-        return name;
+    public static Playername getName() {
+        return Playername;
     }
 
-    public void setName(String name) {
-        Player.name = name;
+    public void setName(Playername name) {
+        Playername = name;
     }
 
     public static String getPictureThumbnail() {
