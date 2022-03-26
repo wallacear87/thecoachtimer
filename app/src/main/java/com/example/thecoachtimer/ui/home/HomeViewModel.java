@@ -60,7 +60,7 @@ public class HomeViewModel extends ViewModel {
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
 
-                Log.d("xxx","failure");
+                Log.d("xxx","failure test");
             }
         });
 
